@@ -7,8 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Menu VerticalAlignment="Top">
-            <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
-        </Menu>
+        <Grid VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Menu Grid.Column="0">
+                <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
+            </Menu>
+            <Menu Grid.Column="1">
+                <MenuItem Header="_Hilfe" />
+            </Menu>
+        </Grid>
     </Grid>
 </Window>
