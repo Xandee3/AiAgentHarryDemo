@@ -30,7 +30,7 @@ namespace AIAgentHarryDemo
 
             if (dialog.ShowDialog() == true)
             {
-                ContactNameTextBlock.Text = $"{dialog.FirstName} {dialog.LastName}".Trim();
+                ContactTextBlock.Text = dialog.ContactText;
             }
         }
     }

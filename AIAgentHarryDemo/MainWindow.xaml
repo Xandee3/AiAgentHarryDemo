@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="ContactNameTextBlock"
-                   Margin="16,48,16,16"
-                   FontSize="18" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <Grid VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+        <Grid Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -24,5 +25,11 @@
                 <MenuItem Header="_Hilfe" />
             </Menu>
         </Grid>
+
+        <TextBlock x:Name="ContactTextBlock"
+                   Grid.Row="1"
+                   Margin="16"
+                   FontSize="16"
+                   TextWrapping="Wrap" />
     </Grid>
 </Window>
