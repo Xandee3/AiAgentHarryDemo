@@ -1,4 +1,4 @@
-﻿<Window x:Class="AIAgentHarryDemo.MainWindow"
+<Window x:Class="AIAgentHarryDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -20,5 +25,22 @@
                 <MenuItem Header="_Hilfe" />
             </Menu>
         </Grid>
+
+        <ListView x:Name="ContactListView"
+                  Grid.Row="1"
+                  Margin="12"
+                  ItemsSource="{Binding Contacts}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Salutation}" Header="Anrede" />
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding FirstName}" Header="Vorname" />
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding LastName}" Header="Name" />
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding PhoneNumber}" Header="Telefonnummer" />
+                    <GridViewColumn Width="180" DisplayMemberBinding="{Binding EmailAddress}" Header="E-Mail-Adresse" />
+                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding Position}" Header="Position" />
+                    <GridViewColumn Width="180" DisplayMemberBinding="{Binding Remarks}" Header="Bemerkungen" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
