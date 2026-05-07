@@ -8,7 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Menu VerticalAlignment="Top">
-            <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
+            <MenuItem Header="_Hilfe">
+                <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
+            </MenuItem>
         </Menu>
     </Grid>
 </Window>
