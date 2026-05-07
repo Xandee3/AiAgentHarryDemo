@@ -1,10 +1,12 @@
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AIAgentHarryDemo
 {
     public partial class ContactDialog : Window
     {
-        internal string Salutation => SalutationTextBox.Text.Trim();
+        internal string Salutation =>
+            (SalutationComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString()?.Trim() ?? string.Empty;
 
         internal string FirstName => FirstNameTextBox.Text.Trim();
 
@@ -22,13 +24,15 @@ namespace AIAgentHarryDemo
             "\n",
             new[]
             {
-                FormatLine("Anrede", Salutation),
-                FormatLine("Name", $"{FirstName} {LastName}".Trim()),
-                FormatLine("Position", Position),
-                FormatLine("Telefonnummer", Phone),
-                FormatLine("E-Mail-Adresse", Email),
-                FormatLine("Bemerkungen", Remarks)
-            });
+                ("Anrede", Salutation),
+                ("Name", $"{FirstName} {LastName}".Trim()),
+                ("Position", Position),
+                ("Telefonnummer", Phone),
+                ("E-Mail-Adresse", Email),
+                ("Bemerkungen", Remarks)
+            }
+            .Where(line => !string.IsNullOrWhiteSpace(line.Item2))
+            .Select(line => FormatLine(line.Item1, line.Item2)));
 
         public ContactDialog()
         {
