@@ -25,6 +25,7 @@
                    Margin="0,0,0,4"
                    Text="Anrede:" />
         <ComboBox x:Name="SalutationComboBox"
+                  AutomationProperties.AutomationId="SalutationComboBox"
                   Grid.Row="1"
                   Width="120"
                   Margin="0,0,0,8"
@@ -51,6 +52,7 @@
                        Margin="0,0,0,4"
                        Text="Vorname:" />
             <TextBox x:Name="FirstNameTextBox"
+                     AutomationProperties.AutomationId="FirstNameTextBox"
                      Grid.Row="1"
                      Grid.Column="0" />
 
@@ -59,6 +61,7 @@
                        Margin="0,0,0,4"
                        Text="Name:" />
             <TextBox x:Name="LastNameTextBox"
+                     AutomationProperties.AutomationId="LastNameTextBox"
                      Grid.Row="1"
                      Grid.Column="2" />
         </Grid>
@@ -67,6 +70,7 @@
                    Margin="0,0,0,4"
                    Text="Position:" />
         <TextBox x:Name="PositionTextBox"
+                 AutomationProperties.AutomationId="PositionTextBox"
                  Grid.Row="4"
                  Margin="0,0,0,8" />
 
@@ -87,6 +91,7 @@
                        Margin="0,0,0,4"
                        Text="Telefonnummer:" />
             <TextBox x:Name="PhoneTextBox"
+                     AutomationProperties.AutomationId="PhoneTextBox"
                      Grid.Row="1"
                      Grid.Column="0" />
 
@@ -95,6 +100,7 @@
                        Margin="0,0,0,4"
                        Text="E-Mail-Adresse:" />
             <TextBox x:Name="EmailTextBox"
+                     AutomationProperties.AutomationId="EmailTextBox"
                      Grid.Row="1"
                      Grid.Column="2" />
         </Grid>
@@ -103,6 +109,7 @@
                    Margin="0,0,0,4"
                    Text="Bemerkungen:" />
         <TextBox x:Name="RemarksTextBox"
+                 AutomationProperties.AutomationId="RemarksTextBox"
                  Grid.Row="7"
                  MinHeight="90"
                  Margin="0,0,0,16"
@@ -114,11 +121,13 @@
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
             <Button MinWidth="80"
+                    AutomationProperties.AutomationId="OkButton"
                     Margin="0,0,8,0"
                     IsDefault="True"
                     Content="OK"
                     Click="OkButton_Click" />
             <Button MinWidth="80"
+                    AutomationProperties.AutomationId="CancelButton"
                     IsCancel="True"
                     Content="Abbrechen" />
         </StackPanel>

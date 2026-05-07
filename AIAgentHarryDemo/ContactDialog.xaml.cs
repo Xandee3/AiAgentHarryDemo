@@ -20,20 +20,14 @@ namespace AIAgentHarryDemo
 
         internal string Remarks => RemarksTextBox.Text.Trim();
 
-        internal string ContactText => string.Join(
-            "\n",
-            new[]
-            {
-                ("Anrede", Salutation),
-                ("Vorname", FirstName),
-                ("Name", LastName),
-                ("Position", Position),
-                ("Telefonnummer", Phone),
-                ("E-Mail-Adresse", Email),
-                ("Bemerkungen", Remarks)
-            }
-            .Where(line => !string.IsNullOrWhiteSpace(line.Item2))
-            .Select(line => FormatLine(line.Item1, line.Item2)));
+        internal string ContactText => ContactFormatter.Format(new ContactDetails(
+            Salutation,
+            FirstName,
+            LastName,
+            Position,
+            Phone,
+            Email,
+            Remarks));
 
         public ContactDialog()
         {
@@ -45,9 +39,5 @@ namespace AIAgentHarryDemo
             DialogResult = true;
         }
 
-        private static string FormatLine(string label, string value)
-        {
-            return $"{label}: {value}";
-        }
     }
 }
