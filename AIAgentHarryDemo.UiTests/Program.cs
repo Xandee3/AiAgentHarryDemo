@@ -4,6 +4,7 @@ using AIAgentHarryDemo;
 var tests = new (string Name, Action Run)[]
 {
     ("Main window exposes contact and help menu items", MainWindowUiTests.ExposesMenuItems),
+    ("Main window adds contacts to contact list", MainWindowUiTests.AddsContactsToContactList),
     ("Contact dialog formats values entered into UI controls", ContactDialogUiTests.FormatsValuesEnteredIntoUiControls),
     ("Contact dialog omits empty UI fields", ContactDialogUiTests.OmitsEmptyUiFields)
 };
@@ -42,9 +43,47 @@ internal static class MainWindowUiTests
         {
             var contactMenuItem = Require<MenuItem>(window, "ContactMenuItem");
             var helpMenuItem = Require<MenuItem>(window, "HelpMenuItem");
+            var contactListBox = Require<ListBox>(window, "ContactListBox");
 
             TestAssert.Equal("_Kontakt", contactMenuItem.Header?.ToString() ?? string.Empty);
             TestAssert.Equal("_Hilfe", helpMenuItem.Header?.ToString() ?? string.Empty);
+            TestAssert.Equal(0, contactListBox.Items.Count);
+        }
+        finally
+        {
+            window.Close();
+        }
+    }
+
+    public static void AddsContactsToContactList()
+    {
+        var window = new MainWindow();
+        try
+        {
+            var contactListBox = Require<ListBox>(window, "ContactListBox");
+            var contact = new ContactDetails(
+                "Herr",
+                "Dirk",
+                "Sandhorst",
+                "Entwickler",
+                "01234",
+                "dirk@example.com",
+                "Bitte zurueckrufen");
+
+            window.AddContact(contact);
+
+            var expected = string.Join(
+                "\n",
+                "Anrede: Herr",
+                "Vorname: Dirk",
+                "Name: Sandhorst",
+                "Position: Entwickler",
+                "Telefonnummer: 01234",
+                "E-Mail-Adresse: dirk@example.com",
+                "Bemerkungen: Bitte zurueckrufen");
+
+            TestAssert.Equal(1, contactListBox.Items.Count);
+            TestAssert.Equal(expected, contactListBox.Items[0]?.ToString() ?? string.Empty);
         }
         finally
         {
@@ -142,6 +181,16 @@ internal static class StaTestRunner
 
 internal static class TestAssert
 {
+    public static void Equal(int expected, int actual)
+    {
+        if (expected == actual)
+        {
+            return;
+        }
+
+        throw new InvalidOperationException($"Expected: {expected}, Actual: {actual}");
+    }
+
     public static void Equal(string expected, string actual)
     {
         if (expected == actual)

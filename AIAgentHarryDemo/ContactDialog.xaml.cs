@@ -20,14 +20,16 @@ namespace AIAgentHarryDemo
 
         internal string Remarks => RemarksTextBox.Text.Trim();
 
-        internal string ContactText => ContactFormatter.Format(new ContactDetails(
+        internal ContactDetails Contact => new(
             Salutation,
             FirstName,
             LastName,
             Position,
             Phone,
             Email,
-            Remarks));
+            Remarks);
+
+        internal string ContactText => ContactFormatter.Format(Contact);
 
         public ContactDialog()
         {

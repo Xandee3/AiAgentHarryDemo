@@ -30,8 +30,13 @@ namespace AIAgentHarryDemo
 
             if (dialog.ShowDialog() == true)
             {
-                ContactTextBlock.Text = dialog.ContactText;
+                AddContact(dialog.Contact);
             }
+        }
+
+        internal void AddContact(ContactDetails contact)
+        {
+            ContactListBox.Items.Add(ContactFormatter.Format(contact));
         }
     }
 }
