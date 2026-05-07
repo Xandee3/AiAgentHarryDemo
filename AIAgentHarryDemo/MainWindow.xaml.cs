@@ -28,7 +28,10 @@ namespace AIAgentHarryDemo
                 Owner = this
             };
 
-            dialog.ShowDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                ContactNameTextBlock.Text = $"{dialog.FirstName} {dialog.LastName}".Trim();
+            }
         }
     }
 }
