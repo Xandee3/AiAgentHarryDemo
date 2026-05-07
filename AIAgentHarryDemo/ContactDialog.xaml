@@ -16,23 +16,17 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
+                   Margin="0,0,0,4"
                    Text="Anrede:" />
         <ComboBox x:Name="SalutationComboBox"
-                  Grid.Row="0"
-                  Grid.Column="1"
-                  Width="160"
+                  Grid.Row="1"
+                  Width="120"
                   Margin="0,0,0,8"
                   HorizontalAlignment="Left">
             <ComboBoxItem Content="Herr" />
@@ -40,72 +34,83 @@
             <ComboBoxItem Content="Divers" />
         </ComboBox>
 
-        <TextBlock Grid.Row="1"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
-                   Text="Vorname:" />
-        <TextBox x:Name="FirstNameTextBox"
-                 Grid.Row="1"
-                 Grid.Column="1"
-                 Margin="0,0,0,8" />
+        <Grid Grid.Row="2"
+              Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="2"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
-                   Text="Name:" />
-        <TextBox x:Name="LastNameTextBox"
-                 Grid.Row="2"
-                 Grid.Column="1"
-                 Margin="0,0,0,8" />
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="0,0,0,4"
+                       Text="Vorname:" />
+            <TextBox x:Name="FirstNameTextBox"
+                     Grid.Row="1"
+                     Grid.Column="0" />
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       Margin="0,0,0,4"
+                       Text="Name:" />
+            <TextBox x:Name="LastNameTextBox"
+                     Grid.Row="1"
+                     Grid.Column="2" />
+        </Grid>
 
         <TextBlock Grid.Row="3"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
+                   Margin="0,0,0,4"
                    Text="Position:" />
         <TextBox x:Name="PositionTextBox"
-                 Grid.Row="3"
-                 Grid.Column="1"
-                 Margin="0,0,0,8" />
-
-        <TextBlock Grid.Row="4"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
-                   Text="Telefonnummer:" />
-        <TextBox x:Name="PhoneTextBox"
                  Grid.Row="4"
-                 Grid.Column="1"
                  Margin="0,0,0,8" />
 
-        <TextBlock Grid.Row="5"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Center"
-                   Text="E-Mail-Adresse:" />
-        <TextBox x:Name="EmailTextBox"
-                 Grid.Row="5"
-                 Grid.Column="1"
-                 Margin="0,0,0,8" />
+        <Grid Grid.Row="5"
+              Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="0,0,0,4"
+                       Text="Telefonnummer:" />
+            <TextBox x:Name="PhoneTextBox"
+                     Grid.Row="1"
+                     Grid.Column="0" />
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="2"
+                       Margin="0,0,0,4"
+                       Text="E-Mail-Adresse:" />
+            <TextBox x:Name="EmailTextBox"
+                     Grid.Row="1"
+                     Grid.Column="2" />
+        </Grid>
 
         <TextBlock Grid.Row="6"
-                   Grid.Column="0"
-                   Margin="0,0,12,8"
-                   VerticalAlignment="Top"
+                   Margin="0,0,0,4"
                    Text="Bemerkungen:" />
         <TextBox x:Name="RemarksTextBox"
-                 Grid.Row="6"
-                 Grid.Column="1"
+                 Grid.Row="7"
                  MinHeight="90"
                  Margin="0,0,0,16"
                  AcceptsReturn="True"
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto" />
 
-        <StackPanel Grid.Row="7"
-                    Grid.ColumnSpan="2"
+        <StackPanel Grid.Row="8"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
             <Button MinWidth="80"

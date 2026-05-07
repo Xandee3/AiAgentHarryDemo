@@ -25,7 +25,8 @@ namespace AIAgentHarryDemo
             new[]
             {
                 ("Anrede", Salutation),
-                ("Name", $"{FirstName} {LastName}".Trim()),
+                ("Vorname", FirstName),
+                ("Name", LastName),
                 ("Position", Position),
                 ("Telefonnummer", Phone),
                 ("E-Mail-Adresse", Email),
