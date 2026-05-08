@@ -5,8 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Kontakt"
-        Height="300"
-        Width="400"
+        SizeToContent="WidthAndHeight"
+        MinWidth="560"
         WindowStartupLocation="CenterOwner">
-    <Grid />
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Anrede" />
+            <ComboBox x:Name="SalutationComboBox"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      Width="90"
+                      SelectedIndex="0">
+                <ComboBoxItem Content="" />
+                <ComboBoxItem Content="Frau" />
+                <ComboBoxItem Content="Herr" />
+                <ComboBoxItem Content="Divers" />
+            </ComboBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="Vorname" />
+            <TextBox x:Name="FirstNameTextBox"
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     MinWidth="180" />
+
+            <TextBlock Grid.Row="0" Grid.Column="4" Text="Name" />
+            <TextBox x:Name="LastNameTextBox"
+                     Grid.Row="1"
+                     Grid.Column="4"
+                     MinWidth="180" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Text="Position" />
+            <TextBox x:Name="PositionTextBox"
+                     Grid.Row="4"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="5" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="Telefonnummer" />
+            <TextBox x:Name="PhoneNumberTextBox"
+                     Grid.Row="7"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     MinWidth="240" />
+
+            <TextBlock Grid.Row="6" Grid.Column="4" Text="E-Mail-Adresse" />
+            <TextBox x:Name="EmailAddressTextBox"
+                     Grid.Row="7"
+                     Grid.Column="4"
+                     MinWidth="240" />
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="5" Text="Bemerkungen" />
+            <TextBox x:Name="RemarksTextBox"
+                     Grid.Row="10"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="5"
+                     MinHeight="80"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto" />
+        </Grid>
+
+        <Separator Grid.Row="1" Margin="0,16,0,12" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK"
+                    Width="80"
+                    Margin="0,0,8,0"
+                    IsDefault="True"
+                    Click="OkButton_Click" />
+            <Button Content="Abbrechen"
+                    Width="90"
+                    IsCancel="True" />
+        </StackPanel>
+    </Grid>
 </Window>

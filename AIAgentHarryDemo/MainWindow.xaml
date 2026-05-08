@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="AI Agent Harry Demo" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <Grid VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -21,5 +26,22 @@
                 <MenuItem Header="_Hilfe" />
             </Menu>
         </Grid>
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Contacts}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Margin="12">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Anrede" Binding="{Binding Salutation}" Width="Auto" />
+                <DataGridTextColumn Header="Vorname" Binding="{Binding FirstName}" Width="*" MinWidth="100" />
+                <DataGridTextColumn Header="Name" Binding="{Binding LastName}" Width="*" MinWidth="100" />
+                <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="*" MinWidth="110" />
+                <DataGridTextColumn Header="Telefonnummer" Binding="{Binding PhoneNumber}" Width="*" MinWidth="120" />
+                <DataGridTextColumn Header="E-Mail-Adresse" Binding="{Binding EmailAddress}" Width="*" MinWidth="150" />
+                <DataGridTextColumn Header="Bemerkungen" Binding="{Binding Remarks}" Width="2*" MinWidth="160" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
