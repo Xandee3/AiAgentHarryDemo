@@ -5,8 +5,127 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Kontakt"
-        Height="300"
-        Width="400"
+        Height="430"
+        Width="620"
+        MinHeight="430"
+        MinWidth="620"
         WindowStartupLocation="CenterOwner">
-    <Grid />
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Anrede" />
+            <ComboBox x:Name="SalutationComboBox"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      Width="110"
+                      HorizontalAlignment="Left"
+                      SelectedIndex="0">
+                <ComboBoxItem Content="" />
+                <ComboBoxItem Content="Herr" />
+                <ComboBoxItem Content="Frau" />
+                <ComboBoxItem Content="Divers" />
+            </ComboBox>
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Vorname" />
+            <TextBox x:Name="FirstNameTextBox"
+                     Grid.Row="2"
+                     Grid.Column="1" />
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="3"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Name" />
+            <TextBox x:Name="LastNameTextBox"
+                     Grid.Row="2"
+                     Grid.Column="4" />
+
+            <TextBlock Grid.Row="4"
+                       Grid.Column="0"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Position" />
+            <TextBox x:Name="PositionTextBox"
+                     Grid.Row="4"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="4" />
+
+            <TextBlock Grid.Row="6"
+                       Grid.Column="0"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Telefonnummer" />
+            <TextBox x:Name="PhoneNumberTextBox"
+                     Grid.Row="6"
+                     Grid.Column="1" />
+
+            <TextBlock Grid.Row="6"
+                       Grid.Column="3"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="E-Mail-Adresse" />
+            <TextBox x:Name="EmailAddressTextBox"
+                     Grid.Row="6"
+                     Grid.Column="4" />
+
+            <TextBlock Grid.Row="8"
+                       Grid.Column="0"
+                       Margin="0,3,8,0"
+                       VerticalAlignment="Top"
+                       Text="Bemerkungen" />
+            <TextBox x:Name="NotesTextBox"
+                     Grid.Row="8"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="4"
+                     AcceptsReturn="True"
+                     MinHeight="100"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto" />
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Margin="0,16,0,0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Width="90"
+                    Margin="0,0,8,0"
+                    IsDefault="True"
+                    Click="OkButton_Click"
+                    Content="OK" />
+            <Button Width="90"
+                    IsCancel="True"
+                    Content="Abbrechen" />
+        </StackPanel>
+    </Grid>
 </Window>
