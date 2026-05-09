@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AIAgentHarryDemo"
         mc:Ignorable="d"
-        Title="AI Agent Harry Demo" Height="450" Width="800">
+        Title="AI Agent Harry Demo" Height="450" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -64,5 +64,21 @@
             <ListBoxItem Content="Suchfunktion" />
             <ListBoxItem Content="Ergebnisliste" />
         </ListBox>
+        <DataGrid x:Name="ContactsDataGrid"
+                  Grid.Row="1"
+                  Margin="12"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Anrede" Binding="{Binding Salutation}" Width="80" />
+                <DataGridTextColumn Header="Vorname" Binding="{Binding FirstName}" Width="*" MinWidth="110" />
+                <DataGridTextColumn Header="Name" Binding="{Binding LastName}" Width="*" MinWidth="120" />
+                <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="*" MinWidth="130" />
+                <DataGridTextColumn Header="Telefon" Binding="{Binding PhoneNumber}" Width="140" />
+                <DataGridTextColumn Header="E-Mail" Binding="{Binding EmailAddress}" Width="*" MinWidth="180" />
+                <DataGridTextColumn Header="Bemerkungen" Binding="{Binding Remarks}" Width="2*" MinWidth="180" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

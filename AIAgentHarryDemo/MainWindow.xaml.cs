@@ -2,6 +2,8 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace AIAgentHarryDemo
 {
@@ -10,9 +12,12 @@ namespace AIAgentHarryDemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ObservableCollection<Contact> contacts = new();
+
         public MainWindow()
         {
             InitializeComponent();
+            ContactsDataGrid.ItemsSource = contacts;
         }
 
         private void ContactMenuItem_Click(object sender, RoutedEventArgs e)
@@ -22,7 +27,10 @@ namespace AIAgentHarryDemo
                 Owner = this
             };
 
-            dialog.ShowDialog();
+            if (dialog.ShowDialog() == true && dialog.Contact is not null)
+            {
+                contacts.Add(dialog.Contact);
+            }
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
