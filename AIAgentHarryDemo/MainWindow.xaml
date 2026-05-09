@@ -9,6 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -27,6 +28,42 @@
             </Menu>
         </Grid>
 
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Margin="0,0,8,0"
+                       VerticalAlignment="Center"
+                       Text="Suchbegriff:" />
+            <TextBox x:Name="SearchTextBox"
+                     Grid.Column="1"
+                     MinWidth="220"
+                     Margin="0,0,8,0"
+                     VerticalContentAlignment="Center"
+                     KeyDown="SearchTextBox_KeyDown" />
+            <Button Grid.Column="2"
+                    MinWidth="90"
+                    Padding="12,4"
+                    Content="Suche"
+                    Click="SearchButton_Click" />
+        </Grid>
+
+        <ListBox x:Name="ResultsListBox"
+                 Grid.Row="2"
+                 Margin="10,0,10,10"
+                 SelectionMode="Extended">
+            <ListBoxItem Content="AI Agent Harry Demo" />
+            <ListBoxItem Content="Kontakt" />
+            <ListBoxItem Content="Extras" />
+            <ListBoxItem Content="Hilfe" />
+            <ListBoxItem Content="Hauptfenster" />
+            <ListBoxItem Content="Suchfunktion" />
+            <ListBoxItem Content="Ergebnisliste" />
+        </ListBox>
         <DataGrid x:Name="ContactsDataGrid"
                   Grid.Row="1"
                   Margin="12"
