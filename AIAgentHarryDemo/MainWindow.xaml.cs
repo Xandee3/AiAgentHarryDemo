@@ -1,13 +1,7 @@
-﻿using System.Text;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AIAgentHarryDemo
 {
@@ -29,6 +23,55 @@ namespace AIAgentHarryDemo
             };
 
             dialog.ShowDialog();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SelectSearchResults();
+        }
+
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+
+            SelectSearchResults();
+            e.Handled = true;
+        }
+
+        private void SelectSearchResults()
+        {
+            ResultsListBox.SelectedItems.Clear();
+
+            var searchTerm = SearchTextBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return;
+            }
+
+            object? firstMatch = null;
+
+            foreach (var item in ResultsListBox.Items)
+            {
+                var itemText = item is ListBoxItem listBoxItem
+                    ? listBoxItem.Content?.ToString()
+                    : item.ToString();
+
+                if (itemText?.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase) != true)
+                {
+                    continue;
+                }
+
+                ResultsListBox.SelectedItems.Add(item);
+                firstMatch ??= item;
+            }
+
+            if (firstMatch is not null)
+            {
+                ResultsListBox.ScrollIntoView(firstMatch);
+            }
         }
     }
 }
