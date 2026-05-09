@@ -19,10 +19,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Menu Grid.Column="0">
-                <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
-                <MenuItem Header="_Extras" />
-            </Menu>
+            <DockPanel Grid.Column="0">
+                <Button Content="Neuer Kontakt"
+                        Margin="4,2"
+                        Padding="8,2"
+                        VerticalAlignment="Center" />
+                <Menu>
+                    <MenuItem Header="_Kontakt" Click="ContactMenuItem_Click" />
+                    <MenuItem Header="_Extras" />
+                </Menu>
+            </DockPanel>
             <Menu Grid.Column="1">
                 <MenuItem Header="_Hilfe" />
             </Menu>
