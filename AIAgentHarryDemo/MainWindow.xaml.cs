@@ -1,8 +1,10 @@
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using System.Windows.Data;
 
 namespace AIAgentHarryDemo
 {
@@ -12,11 +14,13 @@ namespace AIAgentHarryDemo
     public partial class MainWindow : Window
     {
         private readonly ObservableCollection<Contact> contacts = new();
+        private readonly ICollectionView contactsView;
 
         public MainWindow()
         {
             InitializeComponent();
-            ContactsDataGrid.ItemsSource = contacts;
+            contactsView = CollectionViewSource.GetDefaultView(contacts);
+            ContactsDataGrid.ItemsSource = contactsView;
         }
 
         private void ContactMenuItem_Click(object sender, RoutedEventArgs e)
@@ -39,7 +43,7 @@ namespace AIAgentHarryDemo
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectSearchResults();
+            ApplyContactFilter();
         }
 
         private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -49,41 +53,28 @@ namespace AIAgentHarryDemo
                 return;
             }
 
-            SelectSearchResults();
+            ApplyContactFilter();
             e.Handled = true;
         }
 
-        private void SelectSearchResults()
+        private void ApplyContactFilter()
         {
-//            ContactsDataGrid.SelectedItems.Clear();
             ContactsDataGrid.SelectedItem = null;
 
             var searchTerm = SearchTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
+                contactsView.Filter = null;
+                contactsView.Refresh();
                 return;
             }
 
-            Contact? firstMatch = null;
+            contactsView.Filter = item => item is Contact contact && MatchesSearchTerm(contact, searchTerm);
+            contactsView.Refresh();
 
-            foreach (var item in ContactsDataGrid.Items)
+            if (contactsView.Cast<Contact>().FirstOrDefault() is Contact firstMatch)
             {
-                if (item is not Contact contact)
-                {
-                    continue;
-                }
-
-                if (!MatchesSearchTerm(contact, searchTerm))
-                {
-                    continue;
-                }
-
-                ContactsDataGrid.SelectedItem = contact;
-                firstMatch ??= contact;
-            }
-
-            if (firstMatch is not null)
-            {
+                ContactsDataGrid.SelectedItem = firstMatch;
                 ContactsDataGrid.ScrollIntoView(firstMatch);
             }
         }
