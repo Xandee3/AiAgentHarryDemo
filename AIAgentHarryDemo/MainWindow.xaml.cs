@@ -37,6 +37,34 @@ namespace AIAgentHarryDemo
             UpdateSelectedContactDisplay(ContactsDataGrid.SelectedItem as Contact);
         }
 
+        private void EditSelectedContactButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ContactsDataGrid.SelectedItem is not Contact selectedContact)
+            {
+                return;
+            }
+
+            var dialog = new ContactDialog(selectedContact)
+            {
+                Owner = this
+            };
+
+            if (dialog.ShowDialog() != true || dialog.Contact is null)
+            {
+                return;
+            }
+
+            var selectedIndex = contacts.IndexOf(selectedContact);
+            if (selectedIndex < 0)
+            {
+                return;
+            }
+
+            contacts[selectedIndex] = dialog.Contact;
+            ContactsDataGrid.SelectedItem = dialog.Contact;
+            UpdateSelectedContactDisplay(dialog.Contact);
+        }
+
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             SelectSearchResults();

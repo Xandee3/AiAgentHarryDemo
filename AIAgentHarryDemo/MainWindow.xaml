@@ -50,6 +50,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="12" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -82,6 +83,16 @@
 
                 <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="SemiBold" Text="Bemerkungen" />
                 <TextBlock x:Name="SelectedRemarksTextBlock" Grid.Row="6" Grid.Column="2" TextWrapping="Wrap" />
+
+                <Button Grid.Row="0"
+                        Grid.Column="3"
+                        Grid.RowSpan="7"
+                        MinWidth="90"
+                        Margin="16,0,0,0"
+                        Padding="12,4"
+                        VerticalAlignment="Top"
+                        Content="Bearbeiten"
+                        Click="EditSelectedContactButton_Click" />
             </Grid>
         </Border>
 
