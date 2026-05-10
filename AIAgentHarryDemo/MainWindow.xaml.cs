@@ -64,8 +64,13 @@ namespace AIAgentHarryDemo
 
             Contact? firstMatch = null;
 
-            foreach (var contact in contacts)
+            foreach (var item in ContactsDataGrid.Items)
             {
+                if (item is not Contact contact)
+                {
+                    continue;
+                }
+
                 if (!MatchesSearchTerm(contact, searchTerm))
                 {
                     continue;
