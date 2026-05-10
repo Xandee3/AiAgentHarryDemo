@@ -17,6 +17,11 @@ namespace AIAgentHarryDemo
         {
             InitializeComponent();
             ContactsDataGrid.ItemsSource = contacts;
+
+            foreach (var contact in ContactStore.Load())
+            {
+                contacts.Add(contact);
+            }
         }
 
         private void ContactMenuItem_Click(object sender, RoutedEventArgs e)
@@ -29,6 +34,7 @@ namespace AIAgentHarryDemo
             if (dialog.ShowDialog() == true && dialog.Contact is not null)
             {
                 contacts.Add(dialog.Contact);
+                ContactStore.Save(contacts);
             }
         }
 
