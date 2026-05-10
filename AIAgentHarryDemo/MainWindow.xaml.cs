@@ -55,7 +55,8 @@ namespace AIAgentHarryDemo
 
         private void SelectSearchResults()
         {
-            ContactsDataGrid.SelectedItems.Clear();
+//            ContactsDataGrid.SelectedItems.Clear();
+            ContactsDataGrid.SelectedItem = null;
 
             var searchTerm = SearchTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm))
@@ -77,7 +78,7 @@ namespace AIAgentHarryDemo
                     continue;
                 }
 
-                ContactsDataGrid.SelectedItems.Add(contact);
+                ContactsDataGrid.SelectedItem = contact;
                 firstMatch ??= contact;
             }
 
