@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
@@ -84,6 +85,22 @@ namespace AIAgentHarryDemo
             {
                 ContactsDataGrid.ScrollIntoView(firstMatch);
             }
+        }
+
+        private static bool MatchesSearchTerm(Contact contact, string searchTerm)
+        {
+            return ContainsSearchTerm(contact.Salutation, searchTerm)
+                || ContainsSearchTerm(contact.FirstName, searchTerm)
+                || ContainsSearchTerm(contact.LastName, searchTerm)
+                || ContainsSearchTerm(contact.Position, searchTerm)
+                || ContainsSearchTerm(contact.PhoneNumber, searchTerm)
+                || ContainsSearchTerm(contact.EmailAddress, searchTerm)
+                || ContainsSearchTerm(contact.Remarks, searchTerm);
+        }
+
+        private static bool ContainsSearchTerm(string value, string searchTerm)
+        {
+            return value.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase);
         }
 
         private void UpdateSelectedContactDisplay(Contact? contact)
