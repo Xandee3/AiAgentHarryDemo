@@ -1,6 +1,5 @@
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
@@ -50,7 +49,7 @@ namespace AIAgentHarryDemo
 
         private void SelectSearchResults()
         {
-            ResultsListBox.SelectedItems.Clear();
+            ContactsDataGrid.SelectedItems.Clear();
 
             var searchTerm = SearchTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm))
@@ -58,27 +57,39 @@ namespace AIAgentHarryDemo
                 return;
             }
 
-            object? firstMatch = null;
+            Contact? firstMatch = null;
 
-            foreach (var item in ResultsListBox.Items)
+            foreach (var contact in contacts)
             {
-                var itemText = item is ListBoxItem listBoxItem
-                    ? listBoxItem.Content?.ToString()
-                    : item.ToString();
-
-                if (itemText?.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase) != true)
+                if (!MatchesSearchTerm(contact, searchTerm))
                 {
                     continue;
                 }
 
-                ResultsListBox.SelectedItems.Add(item);
-                firstMatch ??= item;
+                ContactsDataGrid.SelectedItems.Add(contact);
+                firstMatch ??= contact;
             }
 
             if (firstMatch is not null)
             {
-                ResultsListBox.ScrollIntoView(firstMatch);
+                ContactsDataGrid.ScrollIntoView(firstMatch);
             }
+        }
+
+        private static bool MatchesSearchTerm(Contact contact, string searchTerm)
+        {
+            return ContainsSearchTerm(contact.Salutation, searchTerm)
+                || ContainsSearchTerm(contact.FirstName, searchTerm)
+                || ContainsSearchTerm(contact.LastName, searchTerm)
+                || ContainsSearchTerm(contact.Position, searchTerm)
+                || ContainsSearchTerm(contact.PhoneNumber, searchTerm)
+                || ContainsSearchTerm(contact.EmailAddress, searchTerm)
+                || ContainsSearchTerm(contact.Remarks, searchTerm);
+        }
+
+        private static bool ContainsSearchTerm(string value, string searchTerm)
+        {
+            return value.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }
