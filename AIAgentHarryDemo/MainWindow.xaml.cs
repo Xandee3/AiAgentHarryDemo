@@ -31,6 +31,11 @@ namespace AIAgentHarryDemo
             }
         }
 
+        private void ContactsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateSelectedContactDisplay(ContactsDataGrid.SelectedItem as Contact);
+        }
+
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             SelectSearchResults();
@@ -76,20 +81,22 @@ namespace AIAgentHarryDemo
             }
         }
 
-        private static bool MatchesSearchTerm(Contact contact, string searchTerm)
+        private void UpdateSelectedContactDisplay(Contact? contact)
         {
-            return ContainsSearchTerm(contact.Salutation, searchTerm)
-                || ContainsSearchTerm(contact.FirstName, searchTerm)
-                || ContainsSearchTerm(contact.LastName, searchTerm)
-                || ContainsSearchTerm(contact.Position, searchTerm)
-                || ContainsSearchTerm(contact.PhoneNumber, searchTerm)
-                || ContainsSearchTerm(contact.EmailAddress, searchTerm)
-                || ContainsSearchTerm(contact.Remarks, searchTerm);
-        }
+            if (contact is null)
+            {
+                SelectedContactBorder.Visibility = Visibility.Collapsed;
+                return;
+            }
 
-        private static bool ContainsSearchTerm(string value, string searchTerm)
-        {
-            return value.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase);
+            SelectedSalutationTextBlock.Text = contact.Salutation;
+            SelectedFirstNameTextBlock.Text = contact.FirstName;
+            SelectedLastNameTextBlock.Text = contact.LastName;
+            SelectedPositionTextBlock.Text = contact.Position;
+            SelectedPhoneNumberTextBlock.Text = contact.PhoneNumber;
+            SelectedEmailAddressTextBlock.Text = contact.EmailAddress;
+            SelectedRemarksTextBlock.Text = contact.Remarks;
+            SelectedContactBorder.Visibility = Visibility.Visible;
         }
     }
 }

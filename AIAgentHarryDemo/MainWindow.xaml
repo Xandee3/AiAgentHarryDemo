@@ -10,6 +10,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -34,7 +36,56 @@
             </Menu>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="10">
+        <Border x:Name="SelectedContactBorder"
+                Grid.Row="1"
+                MaxWidth="460"
+                Margin="10,8,10,4"
+                Padding="10"
+                HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
+                BorderThickness="1"
+                Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" Text="Anrede" />
+                <TextBlock x:Name="SelectedSalutationTextBlock" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="SemiBold" Text="Vorname" />
+                <TextBlock x:Name="SelectedFirstNameTextBlock" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0" FontWeight="SemiBold" Text="Name" />
+                <TextBlock x:Name="SelectedLastNameTextBlock" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0" FontWeight="SemiBold" Text="Position" />
+                <TextBlock x:Name="SelectedPositionTextBlock" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="SemiBold" Text="Telefon" />
+                <TextBlock x:Name="SelectedPhoneNumberTextBlock" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="5" Grid.Column="0" FontWeight="SemiBold" Text="E-Mail" />
+                <TextBlock x:Name="SelectedEmailAddressTextBlock" Grid.Row="5" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="SemiBold" Text="Bemerkungen" />
+                <TextBlock x:Name="SelectedRemarksTextBlock" Grid.Row="6" Grid.Column="2" TextWrapping="Wrap" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -64,8 +115,8 @@
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   IsReadOnly="True"
-                  SelectionMode="Extended"
-                  SelectionUnit="FullRow">
+                  SelectionMode="Single"
+                  SelectionChanged="ContactsDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Anrede" Binding="{Binding Salutation}" Width="80" />
                 <DataGridTextColumn Header="Vorname" Binding="{Binding FirstName}" Width="*" MinWidth="110" />
