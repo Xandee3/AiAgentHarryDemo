@@ -109,19 +109,6 @@
                     Click="SearchButton_Click" />
         </Grid>
 
-        <ListBox x:Name="ResultsListBox"
-                 Grid.Row="3"
-                 MaxHeight="120"
-                 Margin="10,0,10,8"
-                 SelectionMode="Extended">
-            <ListBoxItem Content="AI Agent Harry Demo" />
-            <ListBoxItem Content="Kontakt" />
-            <ListBoxItem Content="Extras" />
-            <ListBoxItem Content="Hilfe" />
-            <ListBoxItem Content="Hauptfenster" />
-            <ListBoxItem Content="Suchfunktion" />
-            <ListBoxItem Content="Ergebnisliste" />
-        </ListBox>
         <DataGrid x:Name="ContactsDataGrid"
                   Grid.Row="4"
                   Margin="12,0,12,12"

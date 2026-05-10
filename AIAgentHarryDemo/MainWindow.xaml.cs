@@ -55,7 +55,8 @@ namespace AIAgentHarryDemo
 
         private void SelectSearchResults()
         {
-            ResultsListBox.SelectedItems.Clear();
+//            ContactsDataGrid.SelectedItems.Clear();
+            ContactsDataGrid.SelectedItem = null;
 
             var searchTerm = SearchTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm))
@@ -63,27 +64,44 @@ namespace AIAgentHarryDemo
                 return;
             }
 
-            object? firstMatch = null;
+            Contact? firstMatch = null;
 
-            foreach (var item in ResultsListBox.Items)
+            foreach (var item in ContactsDataGrid.Items)
             {
-                var itemText = item is ListBoxItem listBoxItem
-                    ? listBoxItem.Content?.ToString()
-                    : item.ToString();
-
-                if (itemText?.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase) != true)
+                if (item is not Contact contact)
                 {
                     continue;
                 }
 
-                ResultsListBox.SelectedItems.Add(item);
-                firstMatch ??= item;
+                if (!MatchesSearchTerm(contact, searchTerm))
+                {
+                    continue;
+                }
+
+                ContactsDataGrid.SelectedItem = contact;
+                firstMatch ??= contact;
             }
 
             if (firstMatch is not null)
             {
-                ResultsListBox.ScrollIntoView(firstMatch);
+                ContactsDataGrid.ScrollIntoView(firstMatch);
             }
+        }
+
+        private static bool MatchesSearchTerm(Contact contact, string searchTerm)
+        {
+            return ContainsSearchTerm(contact.Salutation, searchTerm)
+                || ContainsSearchTerm(contact.FirstName, searchTerm)
+                || ContainsSearchTerm(contact.LastName, searchTerm)
+                || ContainsSearchTerm(contact.Position, searchTerm)
+                || ContainsSearchTerm(contact.PhoneNumber, searchTerm)
+                || ContainsSearchTerm(contact.EmailAddress, searchTerm)
+                || ContainsSearchTerm(contact.Remarks, searchTerm);
+        }
+
+        private static bool ContainsSearchTerm(string value, string searchTerm)
+        {
+            return value.Contains(searchTerm, StringComparison.CurrentCultureIgnoreCase);
         }
 
         private void UpdateSelectedContactDisplay(Contact? contact)
