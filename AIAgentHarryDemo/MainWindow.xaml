@@ -83,9 +83,11 @@
                 <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="SemiBold" Text="Bemerkungen" />
                 <TextBlock x:Name="SelectedRemarksTextBlock" Grid.Row="6" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
-                <Button Grid.Row="0"
+                <Button x:Name="DuplicateContactButton"
+                        Grid.Row="0"
                         Grid.RowSpan="7"
                         Grid.Column="2"
+                        IsEnabled="False"
                         MinWidth="90"
                         Padding="12,4"
                         VerticalAlignment="Top"

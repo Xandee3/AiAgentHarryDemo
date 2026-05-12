@@ -139,10 +139,12 @@ namespace AIAgentHarryDemo
         {
             if (contact is null)
             {
+                DuplicateContactButton.IsEnabled = false;
                 SelectedContactBorder.Visibility = Visibility.Collapsed;
                 return;
             }
 
+            DuplicateContactButton.IsEnabled = true;
             SelectedSalutationTextBlock.Text = contact.Salutation;
             SelectedFirstNameTextBlock.Text = contact.FirstName;
             SelectedLastNameTextBlock.Text = contact.LastName;
