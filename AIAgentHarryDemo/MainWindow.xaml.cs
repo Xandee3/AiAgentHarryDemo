@@ -37,6 +37,37 @@ namespace AIAgentHarryDemo
             UpdateSelectedContactDisplay(ContactsDataGrid.SelectedItem as Contact);
         }
 
+        private void DuplicateContactButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ContactsDataGrid.SelectedItem is not Contact selectedContact)
+            {
+                return;
+            }
+
+            var duplicate = new Contact
+            {
+                Salutation = selectedContact.Salutation,
+                FirstName = $"Duplikat von {selectedContact.FirstName}",
+                LastName = selectedContact.LastName,
+                Position = selectedContact.Position,
+                PhoneNumber = selectedContact.PhoneNumber,
+                EmailAddress = selectedContact.EmailAddress,
+                Remarks = selectedContact.Remarks
+            };
+
+            var dialog = new ContactDialog(duplicate)
+            {
+                Owner = this
+            };
+
+            if (dialog.ShowDialog() == true && dialog.Contact is not null)
+            {
+                contacts.Add(dialog.Contact);
+                ContactsDataGrid.SelectedItem = dialog.Contact;
+                ContactsDataGrid.ScrollIntoView(dialog.Contact);
+            }
+        }
+
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             SelectSearchResults();

@@ -48,8 +48,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="12" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -63,25 +63,34 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="SemiBold" Text="Anrede" />
-                <TextBlock x:Name="SelectedSalutationTextBlock" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedSalutationTextBlock" Grid.Row="0" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="SemiBold" Text="Vorname" />
-                <TextBlock x:Name="SelectedFirstNameTextBlock" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedFirstNameTextBlock" Grid.Row="1" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0" FontWeight="SemiBold" Text="Name" />
-                <TextBlock x:Name="SelectedLastNameTextBlock" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedLastNameTextBlock" Grid.Row="2" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0" FontWeight="SemiBold" Text="Position" />
-                <TextBlock x:Name="SelectedPositionTextBlock" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedPositionTextBlock" Grid.Row="3" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0" FontWeight="SemiBold" Text="Telefon" />
-                <TextBlock x:Name="SelectedPhoneNumberTextBlock" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedPhoneNumberTextBlock" Grid.Row="4" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="5" Grid.Column="0" FontWeight="SemiBold" Text="E-Mail" />
-                <TextBlock x:Name="SelectedEmailAddressTextBlock" Grid.Row="5" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedEmailAddressTextBlock" Grid.Row="5" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="SemiBold" Text="Bemerkungen" />
-                <TextBlock x:Name="SelectedRemarksTextBlock" Grid.Row="6" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="SelectedRemarksTextBlock" Grid.Row="6" Grid.Column="1" Margin="12,0,16,0" TextWrapping="Wrap" />
+
+                <Button Grid.Row="0"
+                        Grid.RowSpan="7"
+                        Grid.Column="2"
+                        MinWidth="90"
+                        Padding="12,4"
+                        VerticalAlignment="Top"
+                        Content="Duplizieren"
+                        Click="DuplicateContactButton_Click" />
             </Grid>
         </Border>
 
